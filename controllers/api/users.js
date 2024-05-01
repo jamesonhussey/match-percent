@@ -7,6 +7,7 @@ module.exports = {
   create,
   login,
   checkToken,
+  edit
 };
 
 async function login(req, res) {
@@ -26,20 +27,16 @@ async function login(req, res) {
 }
 
 async function create(req, res) {
-  console.log(req.body)
+  
   try {
-    // Add the user to the db
-    const user = await User.create(req.body);
-    console.log(req.user)
-
-
+    
     const profileValues = {
-      userId: user._id,
+      // userId: user._id,
       profileImages: [],
       bio: '',
       personalityType: 'imdb',
       gender: 'd',
-      gendersToFilterBy: [],
+      gendersToFilterBy: 'all',
       userEloScore: 400,
       profilesBlocked: [],
       profilesLiked: [],
@@ -49,9 +46,28 @@ async function create(req, res) {
 
 
     const profile = await Profile.create(profileValues)
-    console.log(profile)
+    // Add the user to the db
+    req.body.profile = profile
+    // console.log(profile)
+    console.log(req.body)
+    const user = await User.create(req.body);
+    // console.log(req.user)
+
+    console.log(user)
     const token = createJWT(user);
     res.json(token);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
+
+async function edit(req, res) {
+  try{
+    //project 2 - findbyidandupdate
+    const user = await User.findByIdAndUpdate({email:req.body.email})
+    if (!user) throw new Error('User not found')
+    
+
   } catch (err) {
     res.status(400).json(err);
   }
@@ -72,4 +88,9 @@ function createJWT(user) {
     process.env.SECRET,
     { expiresIn: '24h' }
   );
+}
+
+async function show(req, res) {
+  const user = await User.findById(req.params.id).populate('profile')
+  const profile = await Profile.find({userId: user._id})
 }

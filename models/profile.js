@@ -24,11 +24,11 @@ const profileSchema = new Schema({
         enum: ['d', 'm', 'f', 'o', 'pnta'],
         default: 'd',
     },
-    gendersToFilterBy: [{
+    gendersToFilterBy: {
         type: String,
-        enum: ['m', 'f', 'o', 'pnta'],
-        default: ['d'],
-    }],
+        enum: ['m', 'f', 'o', 'all'],
+        default: 'all',
+    },
     userEloScore: {
         type: Number,
         default: 400,
