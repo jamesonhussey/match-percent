@@ -12,13 +12,19 @@ module.exports = {
 
 async function login(req, res) {
     try {
-        const user = await User.findOne({email:req.body.email})
+        const user = await User.findOne({email:req.body.email}).populate("profile")
+
+        console.log(user)
+
         if (!user) throw new Error()
 
         const match = await bcrypt.compare(req.body.password, user.password)
         if (!match) throw new Error()
 
+
+
         const token = createJWT(user)
+        console.log(token)
         res.json(token)
         
     } catch(err) {
@@ -51,6 +57,10 @@ async function create(req, res) {
     // console.log(profile)
     console.log(req.body)
     const user = await User.create(req.body);
+
+    profile.userId = user._id
+
+    profile.save()
     // console.log(req.user)
 
     console.log(user)
@@ -63,10 +73,18 @@ async function create(req, res) {
 
 async function edit(req, res) {
   try{
-    //project 2 - findbyidandupdate
-    const user = await User.findByIdAndUpdate({email:req.body.email})
-    if (!user) throw new Error('User not found')
+
+    console.log("id: " + req.params.id)
+
+
     
+    const profile = await Profile.findOne({userId: req.params.id})
+    await Profile.findByIdAndUpdate(profile._id, req.body)
+
+
+    const user = await User.findById(req.params.id).populate('profile')
+    const token = createJWT(user);
+    res.json(token);
 
   } catch (err) {
     res.status(400).json(err);

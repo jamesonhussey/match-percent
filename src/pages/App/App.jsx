@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
@@ -9,6 +9,11 @@ import { getUser } from '../../utilities/users-service'
 
 export default function App() {
   const [user, setUser] = useState(getUser());
+  useEffect(() => {
+    console.log("Updating user.")
+  }, [user])
+  // const [profile, setProfile]
+  console.log(user)
   return (
     <main className="App">
       { user ?
@@ -16,7 +21,7 @@ export default function App() {
             <NavBar user = {user} setUser={setUser}/>
             <Routes>
               {/* Route components in here */}
-              <Route path="/profile/edit" element={<EditProfilePage user={ user }/>} />
+              <Route path="/profile/edit" element={<EditProfilePage setUser={setUser} user={ user }/>} />
               <Route path="/profile/list" element={<ProfileListPage user={ user }/>} />
             </Routes>
           </>
