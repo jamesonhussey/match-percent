@@ -6,7 +6,6 @@ export default function ProfileDeleteForm({ user }) {
     const [credentials, setCredentials] = useState({
         name: "",
     });
-    // console.log("Form user: " + user.profile.bio)
     const [error, setError] = useState('');
 
     function handleChange(evt) {
@@ -18,16 +17,16 @@ export default function ProfileDeleteForm({ user }) {
         // Prevent form from being submitted to the server
         evt.preventDefault();
         const token = localStorage.getItem('token')
-        console.log("token: " + token)
+
         try {
-            console.log(credentials)
+
 
             if (user.name == credentials.name) {
                 await usersApi.deleteUser(user._id)
             }
             // await usersApi.editProfile(user._id, credentials);
             // localStorage.setItem('token', token)
-            // console.log("token: " + token)
+
             // setUser(user);
         } catch {
             setError('Profile delete failed');

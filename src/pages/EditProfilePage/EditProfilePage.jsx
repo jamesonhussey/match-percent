@@ -3,7 +3,6 @@ import ProfileEditForm from "../../components/ProfileEditForm/ProfileEditForm";
 // import ProfileDeleteForm from "../../components/ProfileDeleteForm/ProfileDeleteForm";
 
 export default function EditProfilePage({ user, setUser }) {
-  console.log(user)
 
   return (
     <>

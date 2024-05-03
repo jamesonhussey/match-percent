@@ -9,28 +9,28 @@ export default function ProfileEditForm({ user, setUser }) {
         gender: "",
         gendersToFilterBy: "",
     });
-    // console.log("Form user: " + user.profile.bio)
+
     const [error, setError] = useState('');
 
     function handleChange(evt) {
         setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
         setError('');
     }
-    console.log("credentials:" + credentials)
+
     async function handleSubmit(evt) {
         // Prevent form from being submitted to the server
         evt.preventDefault();
 
         const token = localStorage.getItem('token')
-        console.log("token: " + token)
+
         try {
-            console.log(credentials)
+
             
             const token = await usersApi.editProfile(user._id, credentials);
             localStorage.setItem('token', token)
-            console.log("token: " + token)
+
             const updatedUser = usersService.getUser()
-            console.log(updatedUser)
+
             setUser(updatedUser);
         } catch {
             // setError('Profile change failed');

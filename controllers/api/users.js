@@ -14,7 +14,7 @@ async function login(req, res) {
     try {
         const user = await User.findOne({email:req.body.email}).populate("profile")
 
-        console.log(user)
+
 
         if (!user) throw new Error()
 
@@ -24,7 +24,7 @@ async function login(req, res) {
 
 
         const token = createJWT(user)
-        console.log(token)
+
         res.json(token)
         
     } catch(err) {
@@ -54,16 +54,15 @@ async function create(req, res) {
     const profile = await Profile.create(profileValues)
     // Add the user to the db
     req.body.profile = profile
-    // console.log(profile)
-    console.log(req.body)
+
     const user = await User.create(req.body);
 
     profile.userId = user._id
 
     profile.save()
-    // console.log(req.user)
 
-    console.log(user)
+
+
     const token = createJWT(user);
     res.json(token);
   } catch (err) {
@@ -74,7 +73,7 @@ async function create(req, res) {
 async function edit(req, res) {
   try{
 
-    console.log("id: " + req.params.id)
+
 
 
     
@@ -93,7 +92,6 @@ async function edit(req, res) {
 
 function checkToken(req, res) {
     // req.user will always be there for you when a token is sent
-    console.log('req.user', req.user);
     res.json(req.exp);
   }
 

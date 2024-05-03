@@ -10,10 +10,9 @@ import { getUser } from '../../utilities/users-service'
 export default function App() {
   const [user, setUser] = useState(getUser());
   useEffect(() => {
-    console.log("Updating user.")
   }, [user])
   // const [profile, setProfile]
-  console.log(user)
+
   return (
     <main className="App">
       { user ?
