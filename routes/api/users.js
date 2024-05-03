@@ -12,4 +12,6 @@ router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
 router.post('/', usersCtrl.create);
 router.post('/login', usersCtrl.login)
 router.put('/edit/:id', usersCtrl.edit)
+router.delete('/delete/:id', usersCtrl.delete)
+router.get('/:id', usersCtrl.showAll)
 module.exports = router;

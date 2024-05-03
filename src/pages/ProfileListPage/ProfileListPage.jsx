@@ -1,10 +1,11 @@
+import * as usersApi from '../../utilities/users-api'
 
-
-export default function ProfileListPage() {
+export default async function ProfileListPage({userId}) {
+  const profiles = await usersApi.showAll(userId)
   return (
     <>
-      <h1>OrderHistoryPage</h1>
-      
+      <h1>ProfileListPage</h1>
+      {profiles}
     </>
   );
 }

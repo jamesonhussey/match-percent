@@ -1,41 +1,43 @@
 const jwt = require('jsonwebtoken');
 const User = require('../../models/user');
 const bcrypt = require('bcrypt');
-const Profile  = require('../../models/profile');
+const Profile = require('../../models/profile');
 
 module.exports = {
   create,
   login,
   checkToken,
-  edit
+  edit,
+  delete: deleteUser,
+  showAll,
 };
 
 async function login(req, res) {
-    try {
-        const user = await User.findOne({email:req.body.email}).populate("profile")
+  try {
+    const user = await User.findOne({ email: req.body.email }).populate("profile")
 
 
 
-        if (!user) throw new Error()
+    if (!user) throw new Error()
 
-        const match = await bcrypt.compare(req.body.password, user.password)
-        if (!match) throw new Error()
+    const match = await bcrypt.compare(req.body.password, user.password)
+    if (!match) throw new Error()
 
 
 
-        const token = createJWT(user)
+    const token = createJWT(user)
 
-        res.json(token)
-        
-    } catch(err) {
-        res.status(400).json(err);
-    }
+    res.json(token)
+
+  } catch (err) {
+    res.status(400).json(err);
+  }
 }
 
 async function create(req, res) {
-  
+
   try {
-    
+
     const profileValues = {
       // userId: user._id,
       profileImages: [],
@@ -71,29 +73,30 @@ async function create(req, res) {
 }
 
 async function edit(req, res) {
-  try{
-
-
-
-
-    
-    const profile = await Profile.findOne({userId: req.params.id})
+  try {
+    const profile = await Profile.findOne({ userId: req.params.id })
     await Profile.findByIdAndUpdate(profile._id, req.body)
-
-
     const user = await User.findById(req.params.id).populate('profile')
     const token = createJWT(user);
     res.json(token);
-
   } catch (err) {
     res.status(400).json(err);
   }
 }
 
-function checkToken(req, res) {
-    // req.user will always be there for you when a token is sent
-    res.json(req.exp);
+async function deleteUser(req, res) {
+  try {
+    console.log("Deleting user...")
+    await User.findByIdAndDelete(req.params.id)
+  } catch (err) {
+    res.status(400).json(err)
   }
+}
+
+function checkToken(req, res) {
+  // req.user will always be there for you when a token is sent
+  res.json(req.exp);
+}
 
 /*--- Helper Functions --*/
 
@@ -106,7 +109,11 @@ function createJWT(user) {
   );
 }
 
-async function show(req, res) {
-  const user = await User.findById(req.params.id).populate('profile')
-  const profile = await Profile.find({userId: user._id})
+async function showAll(req, res) {
+  const profile = await Profile.findOne({ userId: req.params.userId})
+  const filterGender = profile.gendersToFilterBy
+  const filtered = await User.filter(async (u) => {
+    const uProfile = await Profile.findOne({userId: u._id})
+    uProfile.gender == filterGender
+  })
 }

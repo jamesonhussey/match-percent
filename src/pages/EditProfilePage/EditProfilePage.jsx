@@ -1,5 +1,6 @@
 import "./EditProfilePage.css"
 import ProfileEditForm from "../../components/ProfileEditForm/ProfileEditForm";
+import ProfileDeleteForm from "../../components/ProfileDeleteForm/ProfileDeleteForm";
 // import ProfileDeleteForm from "../../components/ProfileDeleteForm/ProfileDeleteForm";
 
 export default function EditProfilePage({ user, setUser }) {
@@ -14,7 +15,7 @@ export default function EditProfilePage({ user, setUser }) {
       <p>Personality Type: <span className="blue-text">{user.profile.personalityType}</span></p>
 
       <ProfileEditForm user = { user } setUser={setUser}/>
-      {/* <ProfileDeleteForm user = { user }/> */}
+      <ProfileDeleteForm user = { user }/>
     </>
   );
 }

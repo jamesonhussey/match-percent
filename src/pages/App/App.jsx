@@ -6,7 +6,7 @@ import EditProfilePage from '../EditProfilePage/EditProfilePage';
 import ProfileListPage from '../ProfileListPage/ProfileListPage';
 import NavBar from '../../components/NavBar/NavBar';
 import { getUser } from '../../utilities/users-service'
-
+//users = getUsers(){get all} -> controller?
 export default function App() {
   const [user, setUser] = useState(getUser());
   useEffect(() => {
@@ -18,11 +18,14 @@ export default function App() {
       { user ?
           <>
             <NavBar user = {user} setUser={setUser}/>
+            
             <Routes>
               {/* Route components in here */}
               <Route path="/profile/edit" element={<EditProfilePage setUser={setUser} user={ user }/>} />
-              <Route path="/profile/list" element={<ProfileListPage user={ user }/>} />
+              <Route path="/" element={<ProfileListPage />} />
             </Routes>
+
+            
           </>
           :
           <AuthPage setUser={setUser}/>

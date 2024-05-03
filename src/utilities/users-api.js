@@ -14,6 +14,14 @@ export async function editProfile(id, credentials) {
     return sendRequest(`${BASE_URL}/edit/${id}`, 'PUT', credentials)
 }
 
+export async function deleteUser(id) {
+    return sendRequest(`${BASE_URL}/delete/${id}`, 'DELETE')
+}
+
 export function checkToken() {
     return sendRequest(`${BASE_URL}/check-token`)
 }
+
+export async function showAll(userId) {
+    return sendRequest(`${BASE_URL}/${userId}`, 'GET')
+} 

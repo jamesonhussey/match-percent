@@ -1,1 +1,2 @@
 - Fix profile edit form deleting values left blank on accepting changes
+- Redirect to Auth Page after deleting user
