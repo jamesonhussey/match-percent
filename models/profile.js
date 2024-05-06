@@ -3,6 +3,9 @@ const Schema = mongoose.Schema
 
 
 const profileSchema = new Schema({
+    profileName: {
+        type: String,
+    },
     userId: {
         type: Schema.Types.ObjectId,
         ref: 'User', 
@@ -17,17 +20,18 @@ const profileSchema = new Schema({
     },
     personalityType: {
         type: String,
-        default: 'imdb',
+        enum: ['IMDB', 'ISTJ', 'ISFJ', 'INFJ', 'INTJ', 'ISTP', 'ISFP', 'INFP', 'INTP', 'ESTP', 'ESFP', 'ENFP', 'ENTP', 'ESTJ', 'ESFJ', 'ENFJ', 'ENTJ'],
+        default: 'IMDB',
     },
     gender: {
         type: String,
-        enum: ['d', 'm', 'f', 'o', 'pnta'],
-        default: 'd',
+        enum: ['Default', 'Woman', 'Man', 'Nonbinary'],
+        default: 'Default',
     },
     gendersToFilterBy: {
         type: String,
-        enum: ['m', 'f', 'o', 'all'],
-        default: 'all',
+        enum: ['Default', 'Woman', 'Man', 'Nonbinary', 'All'],
+        default: 'Default',
     },
     userEloScore: {
         type: Number,

@@ -40,11 +40,12 @@ async function create(req, res) {
 
     const profileValues = {
       // userId: user._id,
-      profileImages: [],
-      bio: '',
-      personalityType: 'imdb',
-      gender: 'd',
-      gendersToFilterBy: 'all',
+      profileName: '',
+      profileImages: ['https://picsum.photos/400/400'],
+      bio: "I'm new here!",
+      personalityType: 'IMDB',
+      gender: 'Default',
+      gendersToFilterBy: 'Default',
       userEloScore: 400,
       profilesBlocked: [],
       profilesLiked: [],
@@ -60,6 +61,7 @@ async function create(req, res) {
     const user = await User.create(req.body);
 
     profile.userId = user._id
+    profile.profileName = user.name
 
     profile.save()
 
@@ -110,10 +112,14 @@ function createJWT(user) {
 }
 
 async function showAll(req, res) {
-  const profile = await Profile.findOne({ userId: req.params.userId})
-  const filterGender = profile.gendersToFilterBy
-  const filtered = await User.filter(async (u) => {
-    const uProfile = await Profile.findOne({userId: u._id})
-    uProfile.gender == filterGender
-  })
+  // console.log("req.params.id: " + req.params.id)
+  const profile = await Profile.find({})
+  res.json(profile)
+
+  // console.log("Profile in controller function: " + profile)
+  // const filterGender = profile.gendersToFilterBy
+  // const filtered = await User.filter(async (u) => {
+  //   const uProfile = await Profile.findOne({userId: u._id})
+  //   uProfile.gender == filterGender
+  // })
 }

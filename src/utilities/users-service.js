@@ -3,6 +3,7 @@
 // Service modules often depend upon API modules
 // for making AJAX requests to the server.
 
+
 import { getSuggestedQuery } from '@testing-library/react';
 import * as usersAPI from './users-api';
 
@@ -45,4 +46,11 @@ export function checkToken() {
 export function getUser() {
     const token = getToken()
     return token ? JSON.parse(atob(token.split('.')[1])).user : null
+}
+
+export async function getAllUsers(userId) {
+    console.log("userid: " + userId)
+    const users = await usersAPI.showAll(userId)
+    console.log(users)
+    return users
 }

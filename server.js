@@ -1,3 +1,4 @@
+const audit = require('express-requests-logger')
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -8,6 +9,7 @@ require('dotenv').config();
 require('./config/database');
 
 const app = express();
+
 
 app.use(logger('dev'));
 app.use(express.json());

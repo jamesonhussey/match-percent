@@ -23,5 +23,6 @@ export function checkToken() {
 }
 
 export async function showAll(userId) {
+    console.log("userId: " + userId)
     return sendRequest(`${BASE_URL}/${userId}`, 'GET')
-} 
+}
