@@ -1,0 +1,16 @@
+.profile-list-ul {
+    list-style-type: none;
+}
+.profile-pictures {
+    width: 350px;
+}
+.name-container {
+    font-size:xx-large;
+    font-weight:700;
+}
+.heart-image {
+    height: 150px;
+}
+.x-image {
+    height: 150px;
+}

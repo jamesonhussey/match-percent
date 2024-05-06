@@ -1,6 +1,7 @@
 import * as usersService from '../../utilities/users-service'
 import { useState } from 'react';
 import ProfileCard from './ProfileCard'
+import "./ProfileListPage.css"
 
 export default function ProfileListPage({user, allUsers}) {
   console.log(allUsers)
@@ -9,8 +10,7 @@ export default function ProfileListPage({user, allUsers}) {
   ))
   return (
     <>
-      <h1>ProfileListPage</h1>
-      <ul>{ProfileListItems}</ul>
+      <ul className='profile-list-ul'>{ProfileListItems}</ul>
     </>
   );
 }
