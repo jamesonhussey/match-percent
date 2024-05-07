@@ -1,6 +1,21 @@
-# Match%
+# Match% - Overview
 
 Match% is basically a dating site that will use data from external sources (that users already have) in order to better match them with people who "empirically" have similar interests or compatibility in some form. 
+
+# Data Sources
+Match% Compatibility Score will be an average of several other scores from different sources (example: Personality Compat = 75%, YT Compat = 25%, Spotify Compat = 55%, so Overall = 51.6%). The following are implemented and potential data sources: 
+
+- Personality Type Compatibility - Done - Use Myers Briggs personality type compatibility chart 
+
+<img style="width: 400px;" src="README-pics/personality-chart.png">
+
+- YouTube - 1st priority - use YT API to compare watch history, ad-relevant keywords, etc. to determine and compare interests
+
+- Spotify - Low priority - use Spotify API to compare top x artists by time listened
+
+- Steam - Medium priority - use Steam API to compare top played games by time spent
+
+
 
 # Screenshots (Mockup)
 Screenshots say "Date%" because they are from the earlier planning stage and don't reflect the current state of the application. However, I'm using these because I don't want to keep updating these screenshots as the actual site starts to look more and more like the mockup from the planning stage. As of writing this readme, I am in the middle of styling so a lot of things are changing very frequently.
