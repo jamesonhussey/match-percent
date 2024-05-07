@@ -1,16 +1,44 @@
 .profile-list-ul {
     list-style-type: none;
+    padding: 0%
+}
+.profile-card-container {
+    display:flex;
+    justify-content: center;
 }
 .profile-pictures {
-    width: 350px;
+    width: 430px;
 }
 .name-container {
     font-size:xx-large;
     font-weight:700;
 }
+.bio-container {
+    display: flex;
+    font-weight:500;
+    font-size: larger;
+    justify-content: start;
+    padding-left: 20px;
+}
+.overall-score-container {
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-size: larger;
+    text-decoration: underline;
+}
+.like-dislike-container {
+    display:flex;
+    justify-content: center;
+    border-top: 1px solid;
+}
 .heart-image {
+    border-right: 1px solid;
+    border-color: black;
     height: 150px;
+    padding-right: 30px
 }
 .x-image {
     height: 150px;
+    padding-left: 30px;
 }

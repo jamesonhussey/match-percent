@@ -31,22 +31,25 @@ export default function ProfileCard({ activeUser, user }) {
                     <img className="profile-pictures" src={user.profileImages[0]} alt="" />
                 </div>
                 <div className="name-container">{user.profileName}</div>
-                <div>{user.bio}</div>
+                <br />
+                <div className="bio-container">Bio: </div>
+                <div className="bio-container">{user.bio}</div>
                 {/* <div>
                 <img className="profile-pictures" src={user.profileImages[1]} alt="" />
             </div> */}
                 <div>MBTI Personality Type: {user.personalityType}</div>
                 <div>Gender: {user.gender}</div>
                 <br /><br />
-                <div>Match% Overall Compatibility Score - {matchPTScore}%</div>
+                <div className="overall-score-container">Match% Overall Compatibility Score - {matchPTScore}%</div>
                 <div>
                     Personality Compatibility: <br />
                     {activeUser.personalityType} + {user.personalityType} -&gt; {matchPTScore}%
                 </div>
+                <br />
                 {/* <div>
                 <img className="profile-pictures" src={user.profileImages[2]} alt="" />
             </div> */}
-                <div className="heart-image-container">
+                <div className="like-dislike-container">
                     <Link to="/">
                         <img className="heart-image" src="https://pixsector.com/cache/5f5275bf/av83bcb11eee42d2ca6cd.png" alt="" />
                     </Link>
