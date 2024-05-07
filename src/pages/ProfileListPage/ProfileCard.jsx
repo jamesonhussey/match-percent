@@ -3,6 +3,7 @@ import { personalityData } from "./personalityData"
 import "./ProfileListPage.css"
 
 export default function ProfileCard({ activeUser, user }) {
+    const IMDB = 0
     const INFP = 0
     const ENFP = 1
     const INFJ = 2
