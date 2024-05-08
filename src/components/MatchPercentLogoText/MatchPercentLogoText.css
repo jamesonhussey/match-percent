@@ -1,0 +1,15 @@
+.match-percent-logo-text-container {
+    display:flex;
+    color:black;
+    text-decoration: none;
+}
+.match-percent-logo-text {
+    display:flex;
+    color:black;
+    text-decoration: none;
+    font-weight:lighter;
+    margin: 0px;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 3px;
+}

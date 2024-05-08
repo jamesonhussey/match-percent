@@ -20,8 +20,17 @@ export default function ProfileCard({ activeUser, user }) {
     const ESFJ = 13
     const ISTJ = 14
     const ESTJ = 15
+    
+    console.log("Target User PT: " + user.personalityType)
+    console.log("Target User Name: " + user.profileName)
     let userPTVar = eval(user.personalityType)
-    let activeUserPTVar = eval(activeUser.personalityType)
+    console.log("Target User PT Var: " + userPTVar)
+
+    console.log("Active User PT: " + activeUser.profile.personalityType)
+    console.log("Active User Name: " + activeUser.profile.profileName)
+    let activeUserPTVar = eval(activeUser.profile.personalityType)
+    console.log("Active User PT Var: " + activeUserPTVar)
+
     let matchPTScore = personalityData[userPTVar][activeUserPTVar]
 
     return (
@@ -37,13 +46,13 @@ export default function ProfileCard({ activeUser, user }) {
                 {/* <div>
                 <img className="profile-pictures" src={user.profileImages[1]} alt="" />
             </div> */}
-                <div>MBTI Personality Type: {user.personalityType}</div>
-                <div>Gender: {user.gender}</div>
-                <br /><br />
+                {/* <div>MBTI Personality Type: {user.personalityType}</div>
+                <div>Gender: {user.gender}</div> */}
+                <br /><br /><br />
                 <div className="overall-score-container">Match% Overall Compatibility Score - {matchPTScore}%</div>
                 <div>
                     Personality Compatibility: <br />
-                    {activeUser.personalityType} + {user.personalityType} -&gt; {matchPTScore}%
+                    {activeUser.profile.personalityType} + {user.personalityType} -&gt; {matchPTScore}%
                 </div>
                 <br />
                 {/* <div>

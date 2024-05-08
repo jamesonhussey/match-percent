@@ -1,4 +1,25 @@
+.index-page-container {
+    display: flex;
+    flex-direction: column;
+}
+.header-logo-text-and-button {
+    display: flex;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.profile-edit-page-button {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content:right;
+}
+.profile-edit-page-button-image {
+    width: 50px;
+}
 .profile-list-ul {
+    display:flex;
+    flex-direction: column; 
+    /* try changing flex-direction to row for horizontal scrolling. */
     list-style-type: none;
     padding: 0%
 }

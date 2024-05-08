@@ -12,11 +12,9 @@ export default function App() {
   const [user, setUser] = useState(getUser());
   const [allUsers, setAllUsers] = useState(null);
   const getUsers = async ()=> {
-    console.log("Hello")
     try {
     const response = await getAllUsers(user._id)
     setAllUsers(response)
-    console.log("response" + response)
     }
     catch(err) {
       console.log(err)
@@ -28,14 +26,12 @@ export default function App() {
    getUsers()
    
    },[])
-  // console.log(allUsers)
-
 
   return (
     <main className="App">
       { user && allUsers ?
           <>
-            <NavBar user = {user} setUser={setUser}/>
+            {/* <NavBar user = {user} setUser={setUser}/> */}
             
             <Routes>
               {/* Route components in here */}

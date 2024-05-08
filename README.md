@@ -46,6 +46,8 @@ https://matchpercent-690abbbcf0bf.herokuapp.com
 
 - Remake the models so that everything is just in one user model rather than splitting information between user and profile models. This will make everything a lot simpler and easier to enact other changes.
 
+- Add more profile details such as age, location, more gender options, etc.
+
 - Allow photo upload
 
 - Like, Dislike, & Match functionality
@@ -60,7 +62,7 @@ https://matchpercent-690abbbcf0bf.herokuapp.com
 
 - Redirect to Auth Page after deleting user
 
-- Change index page to show one profile at a time rather than all of them at once (unless all at once is a design choice?)
+- Change index page to show one profile at a time rather than all of them at once (unless all at once is a design choice?) (See ProfileListPage.css)
 
 - Support more than one picture where you can scroll through them in a row where the first one is currently
 
